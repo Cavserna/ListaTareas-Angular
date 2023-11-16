@@ -1,0 +1,39 @@
+<p>Bienvenido</p>
+
+<form #formulario="ngForm" (submit)="onSubmit(formulario.value)">
+    <div>
+        <label>Título</label>
+        <input type="text" name="nombre" ngModel>
+    </div>
+    <div>
+        <label>Descripción</label>
+        <input type="text" name="descripcion" ngModel>
+    </div>
+    <div>
+        <label>Puntos de Esfuerzo</label>
+        <select name="esfuerzo" ngModel>
+            <option value="1">Muy bajo</option>
+            <option value="2">Bajo</option>
+            <option value="3">Medio</option>
+            <option value="4">Alto</option>
+            <option value="5">Prioritario</option>
+        </select>
+    </div>
+    <div>
+        <label>Estado</label>
+        <select name="terminado" ngModel>
+            <option value="true">Completado</option>
+            <option value="false">Pendiente</option>
+        </select>
+    </div>
+    <input type="submit" value="Guardar">
+</form>
+
+<ul>
+    <li *ngFor="let tarea of tareas; let indice = index">
+        {{tarea.nombre}} -- {{tarea.descripcion}} -- {{tarea.esfuerzo}} -- {{tarea.terminado}}
+        <button (click)="onRemove (indice)">Eliminar</button>
+
+    </li>
+</ul>
+
